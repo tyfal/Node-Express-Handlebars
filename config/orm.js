@@ -7,6 +7,8 @@ var printQuestionMarks = (num) => {
         arr.push(`?`);
     }
 
+    // console.log(arr.toString());
+
     return arr.toString();
 
 }
@@ -38,7 +40,8 @@ var orm = {
     },
     insertOne: (tableInput, cols, vals, cb) => {
         var queryString = `INSERT INTO ${tableInput} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`
-        cxn.query(queryString, (err, result) => {
+        // console.log(queryString);
+        cxn.query(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);
         });

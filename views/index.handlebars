@@ -1,36 +1,36 @@
-<h1>Nom da Burger!</h1>
+<h1>Nom da Berger!</h1>
 
-<h2>Prepped off der grill!</h2>
+<h2>Right off der grill!</h2>
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{burger_name}}
+      <li>{{burger_name}}</li>
     {{/unless}}
   {{/each}}
 </ul>
 
 <h2>Already nommed!</h2>
 <ul>
-  {{#each burger}}
+  {{#each burgers}}
     {{#if devoured}}
-      {{burger_name}}
+      <li>{{burger_name}}</li>
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a burger</h2>
+<h2>Create da berger!</h2>
 <form class="create-form">
 
   <div class="form-group">
-    <label for="burger">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="burge">Berger Name:</label>
+    <input type="text" id="new-burger-name" name="name">
   </div>
 
   <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Devoured!<br>
-    <input type="radio" name="sleepy" value="0"> Ready for nommin'!
+    <label for="new-devoured">Already Nommed?</label><br>
+    <input type="radio" name="new-devoured" value="1" checked> Devoured!<br>
+    <input type="radio" name="new-devoured" value="0"> Ready fer nommin'!
   </div>
 
-  <button type="submit">Add Burger</button>
+  <button type="submit">Add dis Berger</button>
 </form>

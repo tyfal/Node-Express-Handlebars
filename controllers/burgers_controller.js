@@ -9,9 +9,9 @@ router.get(`/`, (req, res) => {
         var hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
+        // console.log(hbsObject);
+        res.render(`index`, hbsObject);
     });
-    res.render(`index`, hbsObject);
 });
 
 router.post(`/api/burgers`, (req, res) => {
@@ -29,7 +29,7 @@ router.post(`/api/burgers`, (req, res) => {
 router.put(`/api/burgers/:id`, (req, res) => {
     var condition = `id = ${req.params.id}`;
 
-    console.log(`condition: ${condition}`);
+    // console.log(`condition: ${condition}`);
 
     burger.update({
         devoured: req.body.devoured

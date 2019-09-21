@@ -2,7 +2,7 @@
 require(`dotenv`).config();
 var mysql = require(`mysql`);
 
-var connection = mysql.connection({
+var connection = mysql.createConnection({
     host: `localhost`,
     port: 3306,
     user: `root`,
@@ -16,7 +16,7 @@ connection.connect((err) => {
         console.log(`err connecting: ${err.stack}`);
         return
     } else {
-        connection.log(`connection established as id ${connection.threadId}`);
+        console.log(`connection established as id ${connection.threadId}`);
     }
 });
 
