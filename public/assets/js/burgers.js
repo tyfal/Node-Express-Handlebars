@@ -1,15 +1,28 @@
 $(function() {
-    $(`.change-devoured`).on(`click`, function(event) {
+
+    $(`.delete-burger`).on(`click`, function(event) {
 
         var id = $(this).data(`id`);
 
-        console.log(`~~~~~~~~~~~~~~~~\n${id}\n~~~~~~~~~~~~~~~~`);
+        $.ajax(`/api/burgers/${id}`, {
+            type: `DELETE`
+        }).then(() => {
+            console.log(`deleted burger`, id);
+            location.reload();
+        });
 
-        var newDevoured = $(this).data(`newdevour`);
+    });
+
+    $(`.change-devoured`).on(`click`, function(event) {
+
+        var id = $(this).data(`id`);
+        var newDevour = $(this).data(`newdevour`);
 
         var newDevouredState = {
-            devoured: newDevoured
+            devoured: newDevour
         };
+
+        console.log(newDevouredState);
 
         // Put request
         $.ajax(`/api/burgers/${id}`, {
@@ -30,28 +43,13 @@ $(function() {
             devoured: $(`[name=new-devoured]:checked`).val().trim()
         };
 
-        console.log(newBurger);
+        console.log(newBurger + `yoooooo!`);
 
         $.ajax(`/api/burgers`, {
             type: `POST`,
             data: newBurger
         }).then(() => {
             console.log(`DA BERGER!`);
-            location.reload();
-        });
-
-    });
-
-    $(`.delete-burger`).on(`click`, (event) => {
-
-        var id = $(this).data(`id`);
-
-        console.log(`~~~~~~~~~~~~~~~~\n${id}\n~~~~~~~~~~~~~~~~`);
-
-        $.ajax(`/api/burgers/${id}`, {
-            type: `DELETE`
-        }).then(() => {
-            console.log(`deleted burger`, id);
             location.reload();
         });
 
