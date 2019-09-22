@@ -3,7 +3,9 @@ $(function() {
 
         var id = $(this).data(`id`);
 
-        var newDevoured = $(this).data(`newdevoured`);
+        console.log(`~~~~~~~~~~~~~~~~\n${id}\n~~~~~~~~~~~~~~~~`);
+
+        var newDevoured = $(this).data(`newdevour`);
 
         var newDevouredState = {
             devoured: newDevoured
@@ -35,6 +37,21 @@ $(function() {
             data: newBurger
         }).then(() => {
             console.log(`DA BERGER!`);
+            location.reload();
+        });
+
+    });
+
+    $(`.delete-burger`).on(`click`, (event) => {
+
+        var id = $(this).data(`id`);
+
+        console.log(`~~~~~~~~~~~~~~~~\n${id}\n~~~~~~~~~~~~~~~~`);
+
+        $.ajax(`/api/burgers/${id}`, {
+            type: `DELETE`
+        }).then(() => {
+            console.log(`deleted burger`, id);
             location.reload();
         });
 

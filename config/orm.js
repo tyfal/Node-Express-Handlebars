@@ -16,7 +16,9 @@ var printQuestionMarks = (num) => {
 var objToSql = (ob) => {
     var arr = [];
 
-    ob.forEach(key => {
+    console.log(ob);
+
+    Object.keys(ob).forEach(key => {
         var value = ob[key];
 
         if(Object.hasOwnProperty.call(ob, key)) {
@@ -52,6 +54,17 @@ var orm = {
             if (err) throw err;
             cb(result);
         });
+    },
+    delete: (table, condition, cb) => {
+        var queryString = `DELETE FROM ${table} WHERE ${condition}`
+        
+        console.log(queryString);
+
+        cxn.query(queryString, (err, result) => {
+            if (err) throw err;
+            cb(result);
+        })
+    
     }
 };
 
